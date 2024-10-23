@@ -32,12 +32,10 @@
                     </tr>
 
                 </table>
-<<<<<<< HEAD
+
                 <figure class="imagen-pantalla-informes">
                     <img src="../Img/Informes.svg" alt="Imagen de pantalla sobre informes">
                 </figure>
-=======
->>>>>>> refs/remotes/origin/master
 
             </main>
         </section>
