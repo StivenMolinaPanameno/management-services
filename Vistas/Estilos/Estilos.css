@@ -109,16 +109,25 @@ select:focus {
 
 .btn-search-clients {
     background: rgba(39, 174, 185, 1);
+
+
 }
 
 .table-clients {
-background: rgba(0, 0, 0, 0.25)
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
 }
 
 .pl-3 {
     padding-left: 3rem;
 }
 
+.imagen-pantalla-informes {
+    display: inline;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
 table tr{
     border-bottom: 1px solid rgba(95, 123, 125, 1);
 }

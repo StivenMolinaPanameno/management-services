@@ -32,6 +32,9 @@
                     </tr>
 
                 </table>
+                <figure class="imagen-pantalla-informes">
+                    <img src="../Img/Informes.svg" alt="Imagen de pantalla sobre informes">
+                </figure>
 
             </main>
         </section>
