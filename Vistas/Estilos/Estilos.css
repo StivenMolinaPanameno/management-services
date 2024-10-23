@@ -8,14 +8,14 @@
     font-family: 'Albert Sans', sans-serif;
 }
 .principal {
-    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.8) 55%, rgba(248, 159, 59, 0.4) );
-    background-attachment: fixed; /* Fija el fondo */
+    /* Fija el fondo */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 55%, rgba(248, 159, 59, 0.4)) fixed;
     height: 100vh; /* Asegura que ocupe toda la ventana */
 
 }
 .secundary {
-    background: linear-gradient( to bottom, rgba(255, 255, 255, 0.4) , rgba(248, 159, 59, 0.4));
-    background-attachment: fixed; /* Fija el fondo */
+    /* Fija el fondo */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(248, 159, 59, 0.4)) fixed;
     height: 100vh; /* Asegura que ocupe toda la ventana */
     margin: 0; /* Elimina márgenes por defecto */
     padding: 0; /* Elimina padding por defecto */
