@@ -1,4 +1,4 @@
 
     <?php
-    include 'Vistas/Principal.php';
+    include 'Vistas/Principal/Principal.php';
     ?>
