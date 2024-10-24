@@ -23,7 +23,7 @@
                     </select>
                     <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white">Buscar</button>
                 </search>
-                <table class="mx-5 py-2 d-flex flex-column justify-content-end  table-clients">
+                <table class="mx-5 py-2 d-flex flex-column  table-clients">
                     <thead>
                     <tr class="d-flex justify-content-between mx-5 ">
                         <?php $headers = ['Cliente', 'Tipo de Cliente', 'Estatus', 'Cuotas Pendientes', 'Ultima Fecha de Pago', 'Monto Pendiente'];
