@@ -113,7 +113,7 @@ select:focus {
 
 }
 
-.table-clients, .table-servicios {
+.table-clients, .table-servicios, .table-historico-pagos {
     background: rgba(0, 0, 0, 0.25);
     box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
 }
@@ -132,7 +132,7 @@ table tr{
     border-bottom: 1px solid rgba(95, 123, 125, 1);
 }
 
-.registra__pagos, .historico__pagos, .planes__pagos {
+.registrar__pagos, .historico__pagos, .planes__pagos {
     width: 280px;
     height: 105px;
     border-radius: 20px;
@@ -156,11 +156,11 @@ table tr{
 
 }
 .activado-historico-pagos img, .activado-planes-pagos img, .activado-registrar-pagos img{
-    padding-left: 10px;
+    padding-left: 15px;
 }
 
-.registra__pagos img, .historico__pagos img, .planes__pagos img {
-    padding-left: 10px;
+.registrar__pagos img, .historico__pagos img, .planes__pagos img {
+    padding-left: 15px;
 }
 
 .header-pagos {
@@ -281,9 +281,13 @@ table tr{
     height: 70%;
 }
 
+.table-historico-pagos {
+    height: 60%;
+}
+
 #cbx-servicios {
     width: 276px;
-    border:  none;
+
     appearance: none;
     background-image: url("../Iconos/FlechaSelect.svg");
     background-repeat: no-repeat;

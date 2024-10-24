@@ -16,17 +16,23 @@ $activado_registar_pagos = '';
 if ($basename == 'HistoricoPagos.php') {
     $img_historico_pagos = '../Iconos/HistoricoPagosActivado.svg';
     $activado_historico_pagos = 'activado-historico-pagos';
+    $activado_planes_pagos = '';
+    $activado_registar_pagos = '';
 }
 
 if ($basename == 'PlanesPagos.php'){
     $img_planes_pagos = '../Iconos/PlanesPagosActivado.svg';
     $activado_planes_pagos = 'activado-planes-pagos';
+    $activado_registar_pagos = '';
+    $activado_historico_pagos = '';
 }
 
 
 if ($basename == 'RegistrarPagos.php') {
     $img_registrar_pagos= '../Iconos/RegistrarPagosActivado.svg';
     $activado_registar_pagos = 'activado-registrar-pagos';
+    $activado_historico_pagos = '';
+    $activado_planes_pagos = '';
 }
 
 echo "
