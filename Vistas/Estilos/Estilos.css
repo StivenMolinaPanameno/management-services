@@ -131,3 +131,96 @@ select:focus {
 table tr{
     border-bottom: 1px solid rgba(95, 123, 125, 1);
 }
+
+.registra__pagos, .historico__pagos, .planes__pagos {
+    width: 280px;
+    height: 105px;
+    border-radius: 20px;
+    background: rgba(104, 225, 253, 1);
+    box-shadow: -2px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 25px;
+    text-align: center;
+    color: rgba(95, 123, 125, 1);
+}
+
+
+.activado-historico-pagos, .activado-planes-pagos, .activado-registrar-pagos {
+    width: 280px;
+    height: 105px;
+    border-radius: 20px;
+    box-shadow: -2px 8px 4px 0px rgba(0, 0, 0, 0.25);
+    background: rgba(200, 194, 188, 1);
+    font-size: 25px;
+    text-align: center;
+    color: rgba(95, 123, 125, 1);
+
+}
+.activado-historico-pagos img, .activado-planes-pagos img, .activado-registrar-pagos img{
+    padding-left: 10px;
+}
+
+.registra__pagos img, .historico__pagos img, .planes__pagos img {
+    padding-left: 10px;
+}
+
+.header-pagos {
+    margin-left: 200px;
+    margin-right: 200px;
+}
+.form-registrar-pagos {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background: white;
+    box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.form-group-registrar-pagos {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: end;
+    justify-content: center;
+    align-content: end;
+    margin-right: 50px;
+}
+
+.form__input  {
+    display: flex;
+    text-align: end;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.form__input input {
+    height: 30px;
+    width: 140px;
+    align-content: center;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+
+.label {
+    width: 45%;
+    text-align: center;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.btn-registrar-pagos {
+    border: none;
+    outline: 0;
+    width: 350px;
+    height: 70px;
+    background: rgba(39, 174, 185, 1);
+    color: white;
+    text-transform: uppercase;
+    font-size: 30px;
+}

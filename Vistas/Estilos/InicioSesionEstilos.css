@@ -64,4 +64,7 @@ button:hover{
 
 button:focus {
     background: #253641;
+    scale: 1;
+
 }
+
