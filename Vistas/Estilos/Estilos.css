@@ -75,7 +75,8 @@ aside {
     flex: 1;
 }
 
-select {
+
+#cbx-clientes {
     border:  none;
     appearance: none;
     background-image: url("../Iconos/FlechaSelect.svg");
@@ -112,7 +113,7 @@ select:focus {
 
 }
 
-.table-clients {
+.table-clients, .table-servicios {
     background: rgba(0, 0, 0, 0.25);
     box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
 }
@@ -275,4 +276,25 @@ table tr{
 
 .table-clients {
     height: 40%;
+}
+.table-servicios {
+    height: 70%;
+}
+
+#cbx-servicios {
+    width: 276px;
+    border:  none;
+    appearance: none;
+    background-image: url("../Iconos/FlechaSelect.svg");
+    background-repeat: no-repeat;
+    background-position: 95%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    border: 1px solid rgba(155, 155, 155, 0.55);
+    color: rgba(155, 155, 155, 0.55);
+    padding: 5px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
 }
