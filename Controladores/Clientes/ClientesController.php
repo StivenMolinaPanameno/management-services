@@ -43,6 +43,25 @@
             return $resultado;
         }
 
+        public function cargar_cliente_modificar($id) {
+            $resultado = $this->cliente->cargar_cliente_modificar($id);
+            return $resultado;
+        }
+
+        public function actualizar_cliente($id, $tipo_cliente) {
+            $nombres = $_POST['nombres'];
+            $apellidos = $_POST['apellidos'];
+            $telefono = $_POST['telefono'];
+            $correo = $_POST['correo'];
+            $direccion = $_POST['direccion'];
+            $departamento = $_POST['departamento'];
+            $municipio = $_POST['municipio'];
+
+            $resultado = $this->cliente->actualizar_cliente($id, $nombres, $apellidos, $direccion, $departamento, $municipio, $telefono, $correo, $tipo_cliente);
+            return $resultado;
+
+        }
+
     }
 
 ?>

@@ -68,8 +68,8 @@ if (isset($_POST["btn-nuevo-cliente"])) {
                            <td class="text-start w-25 text-truncate"><?= htmlspecialchars($cliente['telefono']); ?></td>
                            <td class="text-start w-25 text-wrap"><?= htmlspecialchars($cliente['correo']); ?></td>
                            <td class="text-center w-25">
-                               <button class="btn btn-warning">Editar</button>
-                               <button class="btn btn-danger">Eliminar</button>
+                               <a href="ModificarClientes.php?id=<?= $cliente['cliente_id'] ?>" class="btn btn-info">Editar</a>
+                               <a class="btn btn-danger">Eliminar</a>
                            </td>
                        </tr>
                    <?php endforeach; ?>

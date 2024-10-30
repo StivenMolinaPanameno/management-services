@@ -85,6 +85,35 @@ require_once ("Conexion.php");
 
         }
 
+        public function cargar_cliente_modificar($id) {
+            $stmt = $this->conexion->prepare("select * from clientes as a
+inner join departamentos as b on a.departamento = b.departamento_id
+inner join municipios as c on a.municipio = c.municipio_id where a.cliente_id = :id");
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function actualizar_cliente($id, $nombres, $apellidos, $direccion, $departamento, $municipio, $telefono, $correo, $tipo_cliente) {
+            $stmt = $this->conexion->prepare("update clientes set nombres = :nombres, apellidos = :apellidos, 
+                    direccion = :direccion, departamento = :departamento, municipio = :municipio, telefono = :telefono, correo = :correo, tipo_cliente = :tipo_cliente where cliente_id = :id");
+            $stmt->bindValue(":nombres", $nombres);
+            $stmt->bindValue(":apellidos", $apellidos);
+            $stmt->bindValue(":direccion", $direccion);
+            $stmt->bindValue(":departamento", $departamento);
+            $stmt->bindValue(":municipio", $municipio);
+            $stmt->bindValue(":telefono", $telefono);
+            $stmt->bindValue(":correo", $correo);
+            $stmt->bindValue(":tipo_cliente", $tipo_cliente);
+            $stmt->bindValue(":id", $id);
+            try {
+                $stmt->execute();
+                return ['success' => true, 'message' => 'Cliente actualizado exitosamente.'];
+            } catch (PDOException $e) {
+                return ['success' => false, 'message' => 'Error al actualizar el cliente: ' . $e->getMessage()];
+            }
+        }
 
 
     }
