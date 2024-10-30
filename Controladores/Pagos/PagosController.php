@@ -63,6 +63,22 @@ require '../../Modelos/PagosModel.php';
             return $errores;
         }
 
+        public function cargar_historico_pagos_cliente ($cod_cliente) {
+            $resultado = $this->pagos->historico_pagos_id($cod_cliente);
+            return $resultado;
+        }
+
+        public function obtener_detalles_pago($cod_cliente) {
+            $resultado = $this->pagos->obtener_detalles_pago($cod_cliente);
+            return $resultado;
+        }
+
+        public function cargar_detalles_plan_pago($cod_cliente) {
+            $resultado = $this->pagos->cargar_detalles_plan_pago($cod_cliente);
+            return $resultado;
+        }
+
+
     }
 
 

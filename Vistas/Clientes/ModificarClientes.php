@@ -10,12 +10,12 @@
     if (isset($_POST["btn-modificar-cliente"])) {
 
         $resultado_actualizacion = $clientes_controller->actualizar_cliente($id, $cliente['tipo_cliente']);
-        echo json_encode($resultado_actualizacion);
-    } else {
-        echo "No se ha presionado Actualizar Cliente";
+        if($resultado_actualizacion['success'] == true){
+            header("Location: ../../Vistas/Clientes/Clientes.php");
+        }
+
     }
-    echo $id;
-    echo json_encode($cliente);
+
 ?>
 
 

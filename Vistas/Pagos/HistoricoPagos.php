@@ -3,6 +3,10 @@
 
     $pagos_controller = new PagosController();
     $pagos = $pagos_controller->cargar_historico_pagos();
+    if(isset($_POST['btn-buscar-historico'])) {
+        $id = $_POST['id'];
+        $pagos = $pagos_controller->cargar_historico_pagos_cliente($id);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -25,15 +29,16 @@
         <?php include '../Componentes/HeaderPagos.php'; ?>
 
             <section class="filtro bg-white mt-5">
-                <search class="  py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
+                <form method="POST" class="  py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
                     <label for="input-clientes" class="pl-3 fw-bold">Cod. Cliente:</label>
-                    <input type="text" name="input-clientes" class="pl-3" id="input-clientes"  >
+                    <input type="text" name="id" class="pl-3" id="input-clientes"  >
 
 
-                    <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white ">Buscar</button>
-                </search>
+                    <button name="btn-buscar-historico" class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white ">Buscar</button>
+                </form>
             </section>
-           <div class="table-fixed">
+           <div class="historico-clientes-table">
+
                <table class=" table-historico-pagos">
 
                    <tr class="d-flex justify-content-between mx-5 ">

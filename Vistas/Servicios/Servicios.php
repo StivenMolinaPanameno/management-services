@@ -2,6 +2,12 @@
     require_once "../../Controladores/Servicios/ServiciosController.php";
     $servicios_controller = new ServiciosController();
     $servicios = $servicios_controller->cargar_servicios();
+    $tipo_servicios = $servicios_controller->cargar_tipo_servicio();
+
+    if(isset($_POST["btn-buscar-servicio"])) {
+        $id = $_POST["id"];
+        $servicios = $servicios_controller->buscar_servicio_tipo($id);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,17 +28,22 @@
     <?php include '../Componentes/SideBar.php' ?>
 
     <main>
-        <search class="filtro mx-5 py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
+        <form method="POST" class="filtro mx-5 py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
             <label for="cbx-servicios" class="pl-3 fw-bold">Filtro:</label>
-            <select name="cbx-servicios" class="pl-3" id="cbx-servicios">
+            <select name="id" class="pl-3" id="cbx-servicios">
                 <option value="" selected>Seleccione una opcion</option>
-                <option value="">Opcion 1</option>
-                <option value="">Opcion 2</option>
-                <option value="">Opcion 3</option>
+                <?php if (!empty($tipo_servicios)): ?>
+                    <?php foreach ($tipo_servicios as $tipo_servicio): ?>
+                        <option value="<?= $tipo_servicio['tipo_servicio_id'] ?>"><?= htmlspecialchars($tipo_servicio['nombre_tipo_servicio']); ?></option>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <option value="">No hay Clientes con Servicios</option>
+                <?php endif; ?>
             </select>
-            <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white">Buscar</button>
-        </search>
+            <button name="btn-buscar-servicio"  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white">Buscar</button>
+        </form>
 
+        <div class="servicios-clientes-table">
             <table class=" table-servicios">
 
                 <tr class="d-flex justify-content-between mx-5 ">
@@ -63,6 +74,7 @@
                 <?php endif; ?>
 
             </table>
+        </div>
 
 
         <figure class="imagen-pantalla-informes">

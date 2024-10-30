@@ -6,10 +6,6 @@ $pagos_controller = new PagosController();
 
 if (isset($_POST["btn-registrar-pagos"])) {
     $pago_registrado = $pagos_controller->registrar_pagos();
-    echo json_encode($pago_registrado);
-    echo 'Hola Mundo';
-} else {
-    echo "No se ha presionado registrar pagos";
 }
 
 if (isset($_POST['btn-buscar-cliente'])) {
@@ -22,7 +18,6 @@ if (isset($_POST['btn-buscar-cliente'])) {
     // Verifica que cod_cliente no sea nulo
     if ($cod_cliente != null) {
         $cod_cliente = intval($cod_cliente);
-        echo json_encode($cod_cliente);
         $pagos_cliente = $pagos_controller->buscar_cliente_registrar_pagos($cod_cliente);
         if ($pagos_cliente != null) {
             $codigo_cliente = isset($pagos_cliente['cliente_id']) ? $pagos_cliente['cliente_id'] : null;
@@ -31,12 +26,7 @@ if (isset($_POST['btn-buscar-cliente'])) {
             $tipo_pago = isset($pagos_cliente['nombre_tipo_pago']) ? $pagos_cliente['nombre_tipo_pago'] : null;
             $servicio = isset($pagos_cliente['nombre_servicio']) ? $pagos_cliente['nombre_servicio'] : '';
         }
-        echo json_encode($pagos_cliente);
-    } else {
-        echo json_encode(['error' => 'El código del cliente es nulo.']);
     }
-} else {
-    echo json_encode(['error' => 'No se recibió el código del cliente.']);
 }
 ?>
 
@@ -75,11 +65,11 @@ if (isset($_POST['btn-buscar-cliente'])) {
                     <div class="form-group-registrar-pagos pb-5">
                         <div class="form__input">
                             <div class="label"><label class="w-100" for="cuota-a-pagar">Cuota a Pagar</label></div>
-                            <input type="text" id="cuota-a-pagar" name="cuota_a_pagar" value="<?= (isset($cuota_a_pagar)) ? $cuota_a_pagar : ''  ?>" required>
+                            <input disabled type="text" id="cuota-a-pagar" name="cuota_a_pagar" value="<?= (isset($cuota_a_pagar)) ? $cuota_a_pagar : ''  ?>" required>
                         </div>
                         <div class="form__input">
                             <div class="label"><label class="w-100" for="codigo-cliente">Cod. Cliente</label></div>
-                            <input type="number" id="codigo-cliente" name="codigo_cliente" value="<?= $codigo_cliente ?>" required>
+                            <input disabled type="number" id="codigo-cliente" name="codigo_cliente" value="<?= $codigo_cliente ?>" required>
                         </div>
                         <div class="form__input">
                             <div class="label"><label class="w-100" for="fecha-de-pago">Fecha de Pago</label></div>
@@ -87,15 +77,15 @@ if (isset($_POST['btn-buscar-cliente'])) {
                         </div>
                         <div class="form__input">
                             <div class="label"> <label class="w-100" for="forma-de-pago">Forma de Pago</label></div>
-                            <input type="text" id="forma-de-pago" name="forma_de_pago" value="<?= isset($tipo_pago) ? $tipo_pago : '' ?>" required>
+                            <input disabled type="text" id="forma-de-pago" name="forma_de_pago" value="<?= isset($tipo_pago) ? $tipo_pago : '' ?>" required>
                         </div>
                         <div class="form__input">
                             <div class="label"><label class="w-100" for="cuotas-pendientes">Cuotas Pendientes</label></div>
-                            <input type="number" id="cuotas-pendientes" name="cuotas_pendientes" value="<?= $cuotas_pendientes ?>" required>
+                            <input disabled type="number" id="cuotas-pendientes" name="cuotas_pendientes" value="<?= $cuotas_pendientes ?>" required>
                         </div>
                         <div class="form__input">
                             <div class="label"><label class="w-100" for="tipo-de-servicio">Servicio</label></div>
-                            <input type="text" id="tipo-de-servicio" name="tipo_de_servicio" value="<?= isset($servicio) ? $servicio : '' ?>" required>
+                            <input disabled type="text" id="tipo-de-servicio" name="tipo_de_servicio" value="<?= isset($servicio) ? $servicio : '' ?>" required>
                         </div>
                     </div>
                     <div class="btn-registrar d-flex justify-content-center align-items-center">

@@ -62,6 +62,29 @@
 
         }
 
+        public function eliminar_cliente($id) {
+            $resultado = $this->cliente->eliminar_cliente($id);
+            return $resultado;
+        }
+        public function cargar_cliente_id($id) {
+            $resultado = $this->cliente->cargar_clientes_id($id);
+            return $resultado;
+        }
+
+        public function cargar_clientes_morosos () {
+            $resultado = $this->cliente->clientes_morosos();
+            return $resultado;
+        }
+        public function clientes_contado(){
+            $resultado = $this->cliente->clientes_contado();
+            return $resultado;
+        }
+
+        public function clientes_credito(){
+            $resultado = $this->cliente->clientes_credito();
+            return $resultado;
+        }
+
     }
 
 ?>

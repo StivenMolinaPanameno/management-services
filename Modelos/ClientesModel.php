@@ -1,12 +1,6 @@
 <?php
 require_once ("Conexion.php");
     class ClientesModel {
-        private $id;
-        private $nombre;
-        private $direccion;
-        private $departamento;
-        private $telefono;
-        private $correo;
 
         private $conexion;
 
@@ -22,10 +16,6 @@ require_once ("Conexion.php");
             return $stmt->fetchAll();
         }
 
-        public function obtener_clientes_filtro($opcion) {
-            $stmt = $this->conexion->prepare("SELECT * FROM clientes WHERE nombre LIKE :nombre");
-        }
-
         public function cargar_clientes() {
             $stmt = $this->conexion->prepare("
        
@@ -34,7 +24,7 @@ require_once ("Conexion.php");
                 b.nombre_tipo_cliente,
                 MAX(d.fecha_pago) AS ultima_fecha_pago,
                 (SELECT COUNT(*) FROM cuotas AS c WHERE c.estatus_cuota = 'pendiente' AND c.cliente = a.cliente_id) AS cuotas_pendientes,
-                e.monto_pendiente 
+                (SELECT SUM(f.monto_cuota) FROM cuotas as f WHERE f.estatus_cuota = 'pendiente' AND f.cliente = a.cliente_id) AS monto_pendiente
             FROM 
                 clientes AS a
             INNER JOIN 
@@ -114,6 +104,97 @@ inner join municipios as c on a.municipio = c.municipio_id where a.cliente_id = 
                 return ['success' => false, 'message' => 'Error al actualizar el cliente: ' . $e->getMessage()];
             }
         }
+
+        public function eliminar_cliente($id) {
+            $stmt = $this->conexion->prepare("delete from clientes where cliente_id = :id");
+            $stmt->bindValue(":id", $id);
+            try {
+                $stmt->execute();
+                return ['success' => true, 'message' => 'Cliente eliminado exitosamente.'];
+            } catch (PDOException $e) {
+                return ['success' => false, 'message' => 'Error al eliminar el cliente: ' . $e->getMessage()];
+            }
+
+        }
+
+        public function cargar_clientes_id ($id) {
+            $stmt = $this->conexion->prepare("select * from clientes where cliente_id = :id");
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function clientes_morosos () {
+            $stmt = $this->conexion->prepare("SELECT 
+                CONCAT(a.nombres, ' ', a.apellidos) AS nombres,
+                b.nombre_tipo_cliente,
+                MAX(d.fecha_pago) AS ultima_fecha_pago,
+                (SELECT COUNT(*) FROM cuotas AS c WHERE c.estatus_cuota = 'pendiente' AND c.cliente = a.cliente_id) AS cuotas_pendientes,
+                (SELECT SUM(f.monto_cuota) FROM cuotas as f WHERE f.estatus_cuota = 'pendiente' AND f.cliente = a.cliente_id) AS monto_pendiente
+            FROM 
+                clientes AS a
+            INNER JOIN 
+                tipo_cliente AS b ON a.tipo_cliente = b.tipo_cliente_id
+            INNER JOIN 
+                pagos AS d ON a.cliente_id = d.cliente
+            INNER JOIN cuotas AS e ON 
+                a.cliente_id = e.cliente
+			WHERE e.fecha_vencimiento < CURRENT_DATE
+            AND e.estatus_cuota = 'pendiente'
+            GROUP BY 
+                nombres;
+");
+            $stmt->execute();
+            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+        }
+
+        public function clientes_contado () {
+            $stmt = $this->conexion->prepare(" SELECT 
+                CONCAT(a.nombres, ' ', a.apellidos) AS nombres,
+                b.nombre_tipo_cliente,
+                MAX(d.fecha_pago) AS ultima_fecha_pago,
+                (SELECT COUNT(*) FROM cuotas AS c WHERE c.estatus_cuota = 'pendiente' AND c.cliente = a.cliente_id) AS cuotas_pendientes,
+                coalesce((SELECT SUM(f.monto_cuota) FROM cuotas as f WHERE f.estatus_cuota = 'pendiente' AND f.cliente = a.cliente_id), 0) AS monto_pendiente
+            FROM 
+                clientes AS a
+            INNER JOIN 
+                tipo_cliente AS b ON a.tipo_cliente = b.tipo_cliente_id
+            INNER JOIN 
+                pagos AS d ON a.cliente_id = d.cliente
+            INNER JOIN detalles_servicio AS e ON 
+                a.cliente_id = e.cliente
+                where d.tipo_pago = 1 
+            GROUP BY 
+                nombres");
+            $stmt->execute();
+            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+        }
+        public function clientes_credito () {
+            $stmt = $this->conexion->prepare(" SELECT 
+                CONCAT(a.nombres, ' ', a.apellidos) AS nombres,
+                b.nombre_tipo_cliente,
+                MAX(d.fecha_pago) AS ultima_fecha_pago,
+                (SELECT COUNT(*) FROM cuotas AS c WHERE c.estatus_cuota = 'pendiente' AND c.cliente = a.cliente_id) AS cuotas_pendientes,
+                coalesce((SELECT SUM(f.monto_cuota) FROM cuotas as f WHERE f.estatus_cuota = 'pendiente' AND f.cliente = a.cliente_id), 0) AS monto_pendiente
+            FROM 
+                clientes AS a
+            INNER JOIN 
+                tipo_cliente AS b ON a.tipo_cliente = b.tipo_cliente_id
+            INNER JOIN 
+                pagos AS d ON a.cliente_id = d.cliente
+            INNER JOIN detalles_servicio AS e ON 
+                a.cliente_id = e.cliente
+                where d.tipo_pago = 2
+            GROUP BY 
+                nombres");
+            $stmt->execute();
+            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+        }
+
 
 
     }

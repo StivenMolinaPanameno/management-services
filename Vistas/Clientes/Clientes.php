@@ -1,21 +1,34 @@
 <?php
     require '../../Controladores/Clientes/ClientesController.php';
 
-// Instanciar el controlador
-$clientes_controller = new ClientesController();
 
-// Obtener la lista de clientes
-$clientes = $clientes_controller->obtener_clientes(); // Asegúrate de que esta función devuelva un array de clientes
-$departamentos = $clientes_controller->cargar_departamentos();
-$municipios = $clientes_controller->cargar_municipios();
+    $clientes_controller = new ClientesController();
 
-if (isset($_POST["btn-nuevo-cliente"])) {
 
-    $resultado_registro = $clientes_controller->insertar_cliente();
-    echo json_encode($resultado_registro);
-} else {
-    echo "No se ha presionado Nuevo Cliente";
-}
+    $clientes = $clientes_controller->obtener_clientes();
+    $departamentos = $clientes_controller->cargar_departamentos();
+    $municipios = $clientes_controller->cargar_municipios();
+
+    if (isset($_POST['btn-buscar-cliente'])) {
+        $id = $_POST['codigo_cliente'];
+        $clientes = $clientes_controller->cargar_cliente_id($id);
+    }
+
+    if (isset($_POST["btn-nuevo-cliente"])) {
+        $resultado_registro = $clientes_controller->insertar_cliente();
+
+        if ($resultado_registro['success'] == true) {
+            header("Location: Clientes.php");
+        }
+    }
+
+    if(!empty($_GET['id'])) {
+        $eliminar_registro = $clientes_controller->eliminar_cliente($_GET['id']);
+
+        if($eliminar_registro['success'] == true) {
+            header("Location: Clientes.php");
+        }
+    }
 
 ?>
 
@@ -35,13 +48,13 @@ if (isset($_POST["btn-nuevo-cliente"])) {
     <?php  include "../Componentes/SideBar.php" ?>
     <main class="overflow-hidden">
         <section class="d-flex justify-content-between align-items-center bg-white mx-5">
-            <search class="filtro  py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
+            <form method="POST" class="filtro py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
                 <label for="input-clientes" class="pl-3 fw-bold">Cod. Cliente:</label>
-                <input type="text" name="input-clientes" class="pl-3" id="input-clientes"  >
+                <input type="text" name="codigo_cliente" class="pl-3" id="input-clientes"  >
 
 
-                <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white ">Buscar</button>
-            </search>
+                <button name="btn-buscar-cliente" class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white ">Buscar</button>
+            </form>
             <button class="btn-nuevo-cliente" type="submit" name="btn-nuevo-cliente" form="formulario-clientes">Nuevo Cliente</button>
         </section>
        <div class="crud-clientes">
@@ -69,7 +82,7 @@ if (isset($_POST["btn-nuevo-cliente"])) {
                            <td class="text-start w-25 text-wrap"><?= htmlspecialchars($cliente['correo']); ?></td>
                            <td class="text-center w-25">
                                <a href="ModificarClientes.php?id=<?= $cliente['cliente_id'] ?>" class="btn btn-info">Editar</a>
-                               <a class="btn btn-danger">Eliminar</a>
+                               <a href="?id=<?= $cliente['cliente_id'] ?>" class="btn btn-danger">Eliminar</a>
                            </td>
                        </tr>
                    <?php endforeach; ?>
