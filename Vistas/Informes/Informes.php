@@ -1,3 +1,10 @@
+<?php
+require '../../Controladores/Clientes/ClientesController.php';
+
+$informeClientes = new ClientesController();
+$informes = $informeClientes->cargar_clientes_informes();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -23,16 +30,31 @@
                     </select>
                     <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white">Buscar</button>
                 </search>
-                <table class="mx-5 py-2 d-flex flex-column  table-clients">
-                    <thead>
-                    <tr class="d-flex justify-content-between mx-5 ">
-                        <?php $headers = ['Cliente', 'Tipo de Cliente', 'Estatus', 'Cuotas Pendientes', 'Ultima Fecha de Pago', 'Monto Pendiente'];
+                <table class="mx-5 table-clients">
+
+                    <tr class="text-center">
+                        <?php $headers = ['Cliente', 'Tipo de Cliente', 'Cuotas Pendientes', 'Ultima Fecha de Pago', 'Monto Pendiente'];
                         foreach ($headers as $header){
                             echo '<th class="pt-3 ">'. $header . '</th>';
                         } ?>
                     </tr>
-                    </thead>
+                    <?php if(!empty($informes)): ?>
+                    <?php foreach ($informes as $informe): ?>
+                    <tr>
+                        <td class="text-center"><?= htmlspecialchars($informe['nombres']); ?></td>
+                        <td class="text-center"><?= htmlspecialchars($informe['nombre_tipo_cliente']); ?></td>
 
+                        <td class="text-center"><?= htmlspecialchars($informe['cuotas_pendientes']); ?></td>
+                        <td class="text-center"><?= htmlspecialchars($informe['ultima_fecha_pago']); ?></td>
+                        <td class="text-center"><?= htmlspecialchars($informe['monto_pendiente']); ?></td>
+
+                    </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" class="text-center">No hay resultados.</td>
+                        </tr>
+                    <?php endif; ?>
                 </table>
 
                 <figure class="imagen-pantalla-informes">

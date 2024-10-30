@@ -17,6 +17,7 @@
     /* Fija el fondo */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), rgba(248, 159, 59, 0.4)) fixed;
     height: 100vh; /* Asegura que ocupe toda la ventana */
+
     margin: 0; /* Elimina márgenes por defecto */
     padding: 0; /* Elimina padding por defecto */
 }
@@ -90,15 +91,18 @@ aside {
     padding: 5px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    width: 260px;
 
 }
 
 select::-ms-expand {
-    display: none; /*Evita que se muestre la flecha por defecto en versiones de IE*/
+    display: none;
 }
 
 .filtro {
     background: rgba(255, 255, 255, 1);
+    width: calc(100% - 6rem);
+    margin: 0 auto;
 }
 
 select:focus {
@@ -116,7 +120,13 @@ select:focus {
 .table-clients, .table-servicios, .table-historico-pagos {
     background: rgba(0, 0, 0, 0.25);
     box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+    width: calc(100% - 6rem);
+    margin: 0 auto;
 }
+
+
 
 .pl-3 {
     padding-left: 3rem;
@@ -128,8 +138,20 @@ select:focus {
     bottom: 10px;
     right: 10px;
 }
-table tr{
+table tr th, table tr  td{
     border-bottom: 1px solid rgba(95, 123, 125, 1);
+    overflow: hidden;
+
+}
+
+main {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.table-fixed {
+    height: 70%;
+    width: 100%;
 }
 
 .registrar__pagos, .historico__pagos, .planes__pagos {
@@ -152,9 +174,10 @@ table tr{
     background: rgba(200, 194, 188, 1);
     font-size: 25px;
     text-align: center;
-    color: rgba(95, 123, 125, 1);
+    color: #FFFFFF;
 
 }
+
 .activado-historico-pagos img, .activado-planes-pagos img, .activado-registrar-pagos img{
     padding-left: 15px;
 }
@@ -171,13 +194,14 @@ table tr{
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    margin-top: 40px;
     margin-left: 100px;
     margin-right: 100px;
     background: white;
     box-shadow: 5px 11px 4.6px 0px rgba(0, 0, 0, 0.25);
 
 }
+
+
 
 .form-group-registrar-pagos {
     display: grid;
@@ -238,7 +262,7 @@ table tr{
 
 .cliente-input-form-direction {
     outline: 0;
-    width: 700px;
+    width: 650px;
     border: 1px solid rgba(155, 155, 155, 0.55);
     color: rgba(155, 155, 155, 0.55);
     padding: 5px;
@@ -300,5 +324,46 @@ table tr{
     padding: 5px;
     border-radius: 10px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.resultado_busqueda{
+    display: flex;
+    flex-wrap: nowrap;
+    font-weight: bold;
+}
+
+.resultado_busqueda p{
+    white-space: nowrap;
+}
+
+p {
+    margin: 0 !important;
+    padding: 0;
+}
+
+.response_search {
+
+    width: 200px;
+    border-bottom: 1px solid black;
+}
+
+.cuotas {
+    width: 80px;
+}
+
+.interes {
+    width: 80px;
+}
+
+.crud-clientes {
+    height: 40%;
+    overflow-y: scroll;
+
+}
+.filtro-registrar-pagos {
+    margin-left: 100px;
+    margin-right: 100px;
+
 
 }

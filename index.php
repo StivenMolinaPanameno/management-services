@@ -1,4 +1,4 @@
 
     <?php
-    include 'Vistas/Usuarios/InicioSesion.php';
+    header('Location: Controladores/InicialController.php');
     ?>

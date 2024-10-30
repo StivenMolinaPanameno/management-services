@@ -1,3 +1,10 @@
+<?php
+    require '../../Controladores/Pagos/PagosController.php';
+
+    $pagos_controller = new PagosController();
+    $pagos = $pagos_controller->cargar_historico_pagos();
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,25 +24,47 @@
     <main>
         <?php include '../Componentes/HeaderPagos.php'; ?>
 
-            <section class=" bg-white mx-5 mt-5">
-                <search class="filtro  py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
+            <section class="filtro bg-white mt-5">
+                <search class="  py-3 d-flex justify-content-start gap-4 align-items-center bg-white">
                     <label for="input-clientes" class="pl-3 fw-bold">Cod. Cliente:</label>
                     <input type="text" name="input-clientes" class="pl-3" id="input-clientes"  >
 
 
                     <button  class="border-0 btn-search-clients rounded-pill px-4 py-2 text-white ">Buscar</button>
-
+                </search>
             </section>
-            <table class="mx-5 py-2 d-flex flex-column table-historico-pagos">
-                <thead>
-                <tr class="d-flex justify-content-between mx-5 ">
-                    <?php $headers = ['Pago', 'Fecha', 'Valor', 'Descripción', 'Tipo', 'No. Comprobante'];
-                    foreach ($headers as $header){
-                        echo '<th class="pt-3 ">'. $header . '</th>';
-                    } ?>
-                </tr>
-                </thead>
-            </table>
+           <div class="table-fixed">
+               <table class=" table-historico-pagos">
+
+                   <tr class="d-flex justify-content-between mx-5 ">
+                       <?php $headers = ['Cliente', 'Fecha', 'Valor', 'Descripción', 'Tipo', 'No. Comprobante'];
+                       foreach ($headers as $header){
+                           echo '<th class="pt-4 text-start w-25">'. $header . '</th>';
+                       } ?>
+                   </tr>
+
+                   <?php if (!empty($pagos)): ?>
+                       <?php foreach ($pagos as $pago): ?>
+                           <tr class="d-flex justify-content-between mx-5">
+                               <td class="text-start  w-25"><?= htmlspecialchars($pago['cliente']); ?></td>
+                               <td class="text-start  w-25"><?= htmlspecialchars($pago['fecha_pago']); ?></td>
+                               <td class="text-start  w-25"><?= htmlspecialchars($pago['monto_pagado']); ?></td>
+                               <td class="text-start  w-25"><?= htmlspecialchars($pago['descripcion']); ?></td>
+                               <td class="text-start w-25"><?= htmlspecialchars($pago['nombre_tipo_pago']); ?></td>
+
+                               <td class="text-start  w-25"><?= htmlspecialchars($pago['pago_id']); ?></td>
+
+                           </tr>
+                       <?php endforeach; ?>
+                   <?php else: ?>
+                       <tr>
+                           <td colspan="6" class="text-center">No hay resultados.</td>
+                       </tr>
+                   <?php endif; ?>
+
+
+               </table>
+           </div>
         <figure class="imagen-pantalla-informes">
             <img src="../Img/RegistrarPagos.svg" alt="Imagen de pantalla sobre informes">
         </figure>
