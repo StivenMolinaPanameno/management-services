@@ -11,7 +11,7 @@
             $this->host = "localhost";
             $this->usuario = "root";
             $this->clave = "";
-            $this->bd_nombre = "management-services-final";
+            $this->bd_nombre = "management-services";
             $this->conexion = null;
 
             try {

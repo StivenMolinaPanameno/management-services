@@ -1,0 +1,104 @@
+/* Configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Estructura de la página */
+.container-page {
+    display: flex;
+    height: 100vh;
+}
+
+/* Barra lateral */
+.sidebar {
+    background-color: #2F4858;
+    color: #FFFFFF;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.sidebar-content {
+    text-align: center;
+}
+
+.sidebar-content img {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+.sidebar-content p {
+    font-size: 14px;
+}
+
+/* Sección de login */
+.login-section {
+    background: linear-gradient(to bottom, #ffffff, #ffedcc);
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    background-color: #37474F;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #FFFFFF;
+    width: 300px;
+}
+
+.login-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+form label {
+    display: block;
+    text-align: left;
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+    background-color: #B0BEC5;
+}
+
+form button {
+    background-color: #FF6F00;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-color: #E65100;
+}

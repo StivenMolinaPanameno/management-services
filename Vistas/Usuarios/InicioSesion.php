@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -26,4 +27,44 @@
            </section>
         </main>
     </body>
+</html>
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de Sesión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../Estilos/InicioSesion.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-page d-flex">
+        <!-- Barra lateral -->
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <img src="../Iconos/ConsultaPagos.svg" alt="Icono de Sesion">
+                <p>Inicio de Sesión</p>
+            </div>
+        </aside>
+
+        <!-- Sección de login -->
+        <main class="login-section d-flex flex-column align-items-center justify-content-center">
+            <div class="login-container">
+                <h1 class="text-center">BIENVENIDO.</h1>
+                <p class="text-center">Ingresa tu usuario y contraseña:</p>
+                
+                <form action="../../Controladores/Usuarios/IniciarSesionController.php?Tipo=autenticar" method="POST">
+                    <label for="username">Usuario</label>
+                    <input type="text" name="username" id="username" required>
+
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" required>
+
+                    <button type="submit">LOGIN</button>
+                </form>
+            </div>
+        </main>
+    </div>
+</body>
 </html>
