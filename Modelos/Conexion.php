@@ -11,7 +11,7 @@
             $this->host = "localhost";
             $this->usuario = "root";
             $this->clave = "";
-            $this->bd_nombre = "management-services-final";
+            $this->bd_nombre = "Grupo01_BDAppWeb";
             $this->conexion = null;
 
             try {
