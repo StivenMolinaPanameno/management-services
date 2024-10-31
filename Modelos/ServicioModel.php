@@ -58,12 +58,11 @@ require 'Conexion.php';
                         detalles_servicio AS c ON a.servicio_id = c.detalle_servicio_id
                     INNER JOIN 
                         clientes AS d ON c.cliente = d.cliente_id
-                    WHERE a.tipo_servicio = :tipo
+                    WHERE b.tipo_servicio_id = :tipo
                 ");
             $stmt->bindValue(':tipo', $tipo);
             $stmt->execute();
-            $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return $resultados;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
     }

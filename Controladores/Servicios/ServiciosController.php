@@ -18,8 +18,8 @@
             return $resultado;
         }
 
-        public function buscar_servicio_tipo($tipo) {
-            $resultado = $this->servicio_model->buscar_servicio_tipo($tipo);
+        public function buscar_servicio_tipo($id) {
+            $resultado = $this->servicio_model->buscar_servicio_tipo($id);
             return $resultado;
         }
 

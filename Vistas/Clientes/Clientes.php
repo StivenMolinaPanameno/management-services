@@ -16,9 +16,12 @@
 
     if (isset($_POST["btn-nuevo-cliente"])) {
         $resultado_registro = $clientes_controller->insertar_cliente();
-
+        $usuario_result = '';
         if ($resultado_registro['success'] == true) {
-            header("Location: Clientes.php");
+            $usuario_result = '<p class="text-center alert alert-success alert-dismissible fade show">Cliente registrado exitosamente</p>';
+        }
+        else {
+            $usuario_result='<p class="text-center alert alert-danger alert-dismissible fade show"> Revise que el correo y/o número de telefono sean unicos y no esten registrados ya, y que los campos no esten vacios </p>';
         }
     }
 
@@ -26,7 +29,7 @@
         $eliminar_registro = $clientes_controller->eliminar_cliente($_GET['id']);
 
         if($eliminar_registro['success'] == true) {
-            header("Location: Clientes.php");
+            $usuario_result='<p class="text-center alert alert-danger alert-dismissible fade show"> Cliente Eliminado </p>';
         }
     }
 
@@ -172,6 +175,11 @@
 
                 </div>
             </form>
+           <?php
+            if(isset($usuario_result)) {
+                echo $usuario_result;
+            }
+           ?>
         </section>
 
 

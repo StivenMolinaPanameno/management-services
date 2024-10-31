@@ -6,7 +6,9 @@
 
     if(isset($_POST["btn-buscar-servicio"])) {
         $id = $_POST["id"];
+        echo $id;
         $servicios = $servicios_controller->buscar_servicio_tipo($id);
+        echo json_encode($servicios);
     }
 ?>
 
@@ -34,6 +36,7 @@
                 <option value="" selected>Seleccione una opcion</option>
                 <?php if (!empty($tipo_servicios)): ?>
                     <?php foreach ($tipo_servicios as $tipo_servicio): ?>
+
                         <option value="<?= $tipo_servicio['tipo_servicio_id'] ?>"><?= htmlspecialchars($tipo_servicio['nombre_tipo_servicio']); ?></option>
                     <?php endforeach; ?>
                 <?php else: ?>

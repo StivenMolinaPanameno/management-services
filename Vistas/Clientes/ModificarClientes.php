@@ -12,6 +12,8 @@
         $resultado_actualizacion = $clientes_controller->actualizar_cliente($id, $cliente['tipo_cliente']);
         if($resultado_actualizacion['success'] == true){
             header("Location: ../../Vistas/Clientes/Clientes.php");
+        }else{
+            $usuario_result='<p class="text-center alert alert-danger alert-dismissible fade show"> Revise que el correo y/o número de telefono sean unicos y no esten registrados ya, y que los campos no esten vacios </p>';
         }
 
     }
@@ -112,6 +114,12 @@
                         </div>
                     </div>
                 </form>
+            <?php
+                if(isset($usuario_result)){
+                    echo $usuario_result;
+                }
+            ?>
+
                 <div class="btn-modificar mx-auto d-flex justify-content-center">
                     <button name="btn-modificar-cliente" type="submit" class="px-5 py-2 my-3 btn rounded btn-info text-white" form="formulario-modificar">Modificar</button>
                 </div>

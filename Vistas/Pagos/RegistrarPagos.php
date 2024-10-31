@@ -25,6 +25,8 @@ if (isset($_POST['btn-buscar-cliente'])) {
             $cuotas_pendientes = isset($pagos_cliente['cuotas_pendientes']) ? $pagos_cliente['cuotas_pendientes'] : null;
             $tipo_pago = isset($pagos_cliente['nombre_tipo_pago']) ? $pagos_cliente['nombre_tipo_pago'] : null;
             $servicio = isset($pagos_cliente['nombre_servicio']) ? $pagos_cliente['nombre_servicio'] : '';
+        }else {
+            $usuario_result='<p class="text-center alert alert-danger alert-dismissible fade show">No se encontraron cuotas para este cliente</p>';
         }
     }
 }
@@ -92,10 +94,14 @@ if (isset($_POST['btn-buscar-cliente'])) {
                         <button type="submit"  name="btn-registrar-pagos" class="rounded btn-registrar-pagos">Registrar Pagos</button>
                     </div>
                 </form>
-
+            <?php
+                if(isset($usuario_result)){
+                    echo $usuario_result;
+                }
+            ?>
 
             </section>
-            <figure class="imagen-pantalla-informes">
+           <figure class="imagen-pantalla-informes">
                 <img src="../Img/RegistrarPagos.svg" alt="Imagen de pantalla sobre informes">
             </figure>
         </main>
