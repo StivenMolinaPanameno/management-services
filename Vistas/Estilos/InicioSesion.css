@@ -20,7 +20,7 @@ body, html {
 .sidebar {
     background-color: #2F4858;
     color: #FFFFFF;
-    width: 15%;
+    width:  102px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@ body, html {
 }
 
 .sidebar-content p {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 /* Sección de login */
@@ -47,16 +47,23 @@ body, html {
     display: flex;
     align-items: center;
     justify-content: center;
+
 }
 
 .login-container {
     background-color: #37474F;
     padding: 40px;
-    border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     color: #FFFFFF;
-    width: 300px;
+    width: 402px;
+    height: 315px;
+    top: 403px;
+    left: 532px;
+    gap: 0px;
+    border-radius: 20px;
+
+
 }
 
 .login-container h1 {
@@ -81,14 +88,14 @@ form input[type="text"],
 form input[type="password"] {
     width: 100%;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: none;
     margin-bottom: 15px;
-    background-color: #B0BEC5;
+    background-color: rgba(217, 217, 217, 1);
 }
 
 form button {
-    background-color: #FF6F00;
+    background-color:#F77D27;
     color: #FFFFFF;
     width: 100%;
     padding: 10px;
@@ -101,4 +108,34 @@ form button {
 
 form button:hover {
     background-color: #E65100;
+}
+
+.ingersa_tu_usuario {
+    font-family: Urbanist;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    width: 71px;
+    height: 72px;
+    gap: 0px;
+    text-decoration: underline rgba(39, 174, 185, 1);
+    color: rgba(39, 174, 185, 1)
+}
+
+.bienvenido {
+    font-family: Urbanist;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 76.8px;
+    text-align: center;
+}
+
+main > p {
+    font-family: Urbanist;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 33.6px;
+    text-align: center;
+
 }

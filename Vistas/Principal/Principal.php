@@ -23,15 +23,15 @@
            <section class="items d-flex justify-content-evenly text-center ">
                <article>
                    <img src="../Iconos/ConsultaPagos.svg" alt="Icono sobre consultar tu información y cuotas por pagar">
-                   <p>Consultar tu información y cuotas por pagar</p>
+                   <a class="actions d-block text-decoration-none" href="../Pagos/HistoricoPagos.php">Consultar tu información y cuotas por pagar</a>
                </article>
                <article>
                    <img src="../Iconos/RegistrarPagos.svg" alt="Icono de Registrar Pagos">
-                   <p>Registrar Pagos</p>
+                   <a href="../Pagos/RegistrarPagos.php" class="actions d-block text-decoration-none">Registrar Pagos</a>
                </article>
                <article>
                    <img src="../Iconos/ConfigurarNotificaciones.svg" alt="Icono sobre configurar Notificaciones">
-                   <p>Configurar Notificaciones</p>
+                   <a class="actions d-block text-decoration-none">Configurar Notificaciones</a>
                </article>
            </section>
            <article class="text-center">

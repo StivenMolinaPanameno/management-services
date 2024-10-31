@@ -383,3 +383,8 @@ p {
     width: calc(100% - 6rem);
     margin: 0 auto;
 }
+
+.actions {
+    text-decoration: none;
+    color: rgba(95, 123, 125, 1);
+}

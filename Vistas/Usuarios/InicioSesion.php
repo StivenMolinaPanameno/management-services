@@ -37,34 +37,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../Estilos/InicioSesion.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="principal">
     <div class="container-page d-flex">
         <!-- Barra lateral -->
         <aside class="sidebar">
             <div class="sidebar-content">
                 <img src="../Iconos/ConsultaPagos.svg" alt="Icono de Sesion">
-                <p>Inicio de Sesión</p>
+                <p class="ingersa_tu_usuario">Inicio de Sesión</p>
             </div>
         </aside>
 
-        <!-- Sección de login -->
-        <main class="login-section d-flex flex-column align-items-center justify-content-center">
-            <div class="login-container">
-                <h1 class="text-center">BIENVENIDO.</h1>
-                <p class="text-center">Ingresa tu usuario y contraseña:</p>
-                
-                <form action="../../Controladores/Usuarios/IniciarSesionController.php?Tipo=autenticar" method="POST">
-                    <label for="username">Usuario</label>
-                    <input type="text" name="username" id="username" required>
+        <div class="w-100 d-flex flex-column">
+            <?php include '../Componentes/HeaderLogo.php' ?>
+            <!-- Sección de login -->
+            <main class="login-section d-flex flex-column align-items-center justify-content-center w-100 h-100">
+                <h1 class="text-center bienvenido">BIENVENIDO.</h1>
+                <p class="text-center py-4">Ingresa tu usuario y contraseña:</p>
 
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" required>
+                <div class="login-container ">
+                    <form action="../../Controladores/Usuarios/IniciarSesionController.php?Tipo=autenticar" method="POST">
+                        <label for="username">Usuario</label>
+                        <input type="text" name="username" id="username" required>
 
-                    <button type="submit">LOGIN</button>
-                </form>
-            </div>
-        </main>
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" id="password" required>
+
+                        <button class="rounded-pill" type="submit">LOGIN</button>
+                    </form>
+                </div>
+            </main>
+        </div>
     </div>
 </body>
 </html>

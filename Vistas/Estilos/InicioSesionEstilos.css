@@ -68,3 +68,10 @@ button:focus {
 
 }
 
+.principal {
+
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 55%, rgba(248, 159, 59, 0.4)) fixed;
+    height: 100vh;
+
+}
+
