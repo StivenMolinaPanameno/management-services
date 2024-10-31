@@ -6,9 +6,7 @@
 
     if(isset($_POST["btn-buscar-servicio"])) {
         $id = $_POST["id"];
-        echo $id;
         $servicios = $servicios_controller->buscar_servicio_tipo($id);
-        echo json_encode($servicios);
     }
 ?>
 
